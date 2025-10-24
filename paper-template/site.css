@@ -1,0 +1,6 @@
+/* Site-specific styles extracted to keep CSS independent.
+   Currently minimal as template styles are loaded from ../web/DSP _ Dense Policy_files.
+   Add any page-specific overrides here to avoid inline styles in HTML. */
+
+/* Example: tighten title spacing to match paper styling */
+.publication-title { margin-bottom: 0.75rem; }

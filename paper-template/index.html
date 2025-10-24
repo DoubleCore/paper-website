@@ -1,0 +1,308 @@
+<!-- 
+【模板使用说明】
+
+欢迎使用本学术项目主页模板！为了快速构建您的网站，请遵循以下步骤：
+
+1.  **全局信息替换**:
+    - 在 <head> 区域，找到 `<!-- Google tag (gtag.js) -->` 部分，并将 `G-XXXXXXXXXX` 替换为您自己的 Google Analytics ID。
+    - 修改 `<title>` 标签中的 `{{PAPER_TITLE}}` 为您的论文标题。
+    - 修改 `<meta name="description">` 和 `<meta name="keywords">` 中的 content 内容。
+
+2.  **内容填充**:
+    - 全文搜索 `{{PLACEHOLDER}}` 格式的占位符，并将其替换为您的具体内容。
+    - 主要占位符包括：
+        - `{{PAPER_TITLE}}`: 论文标题
+        - `{{AUTHOR_NAME}}`: 作者姓名 (可添加多个)
+        - `{{AUTHOR_LINK}}`: 作者主页链接
+        - `{{PDF_LINK}}`: 论文PDF文件链接
+        - `{{ARXIV_LINK}}`: ArXiv链接
+        - `{{CODE_LINK}}`: 代码仓库链接
+        - `{{CONFERENCE_NAME}}`: 会议/期刊名称
+        - `{{YEAR}}`: 发表年份
+        - `{{TEASER_TEXT}}`: 核心成果的简短介绍
+        - `{{ABSTRACT_TEXT}}`: 论文摘要
+        - `{{METHOD_X_TITLE}}`: 方法点标题
+        - `{{METHOD_X_DESCRIPTION}}`: 方法点描述
+        - `{{SOTA_COMPARISON_TEXT}}`: SOTA比较的描述
+        - `{{ABLATION_STUDY_TEXT}}`: 消融实验的描述
+
+3.  **图片资源**:
+    - 将您自己的图片资源放入 `images` 文件夹。
+    - 替换HTML代码中所有 `images/` F路径下的图片，例如 `images/teaser.jpg`, `images/method_overview.jpg` 等。
+    - 建议图片文件名与模板中的名称保持一致，以减少修改工作量。
+
+4.  **BibTeX**:
+    - 在 BibTeX 部分，更新引用信息。
+
+5.  **页脚 (Footer)**:
+    - 根据需要更新页脚的链接和信息。
+
+完成以上步骤后，您的项目主页即可上线。 -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- 页面描述，会显示在搜索结果中 -->
+  <meta name="description" content="{{PAPER_DESCRIPTION}}">
+  <!-- 页面关键词，用于SEO -->
+  <meta name="keywords" content="{{KEYWORDS}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 页面标题 -->
+  <title>{{PAPER_TITLE}}</title>
+
+  <!-- Google tag (gtag.js) -->
+  <!-- 请将 G-XXXXXXXXXX 替换为您自己的 Google Analytics ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <script src="main.js"></script>
+
+  <!-- 字体、图标和CSS框架 -->
+  <!-- Google字体 -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <!-- 网站图标，替换为你自己的icon.jpg -->
+  <link rel="icon" type="image/png" href="images/icon.jpg">
+  <!-- Bulma CSS 框架 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <!-- Bulma 扩展：轮播 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
+  <!-- Bulma 扩展：滑块 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.5/dist/css/bulma-slider.min.css">
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Academicons 学术图标库 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <!-- 自定义样式表 -->
+  <link rel="stylesheet" href="site.css">
+
+  <!-- JavaScript 库 -->
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Font Awesome JS -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <!-- Bulma Carousel JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+  <!-- Bulma Slider JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.5/dist/js/bulma-slider.min.js"></script>
+</head>
+<body>
+
+<!-- 顶部Hero区域：展示论文标题、作者和主要链接 -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <!-- 论文标题 -->
+          <h1 class="title is-1 publication-title">{{PAPER_TITLE}}</h1>
+          <!-- 作者列表 -->
+          <!-- 格式: <span class="author-block"><a href="作者主页链接">作者姓名</a></span> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="#">作者1</a></span>
+            <span class="author-block"><a href="#">作者2</a></span>
+            <!-- 可继续添加更多作者 -->
+          </div>
+
+          <!-- 作者单位/机构 (可选) -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">单位1</span>
+            <span class="author-block">单位2</span>
+          </div>
+
+          <!-- 主要链接：论文、ArXiv、代码等 -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF链接 -->
+              <span class="link-block">
+                <a href="{{PDF_LINK}}" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>论文 (PDF)</span>
+                </a>
+              </span>
+              <!-- ArXiv链接 -->
+              <span class="link-block">
+                <a href="{{ARXIV_LINK}}" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- 代码链接 -->
+              <span class="link-block">
+                <a href="{{CODE_LINK}}" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>代码</span>
+                </a>
+              </span>
+              <!-- 可选：项目主页链接 -->
+              <!-- <span class="link-block">
+                <a href="{{PROJECT_PAGE_LINK}}" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-globe"></i></span>
+                  <span>Project Page</span>
+                </a>
+              </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser区域：展示核心成果图和简短介绍 -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <!-- 发表的会议/期刊名称和年份 -->
+          <h2 class="title is-3">{{CONFERENCE_NAME}} {{YEAR}}</h2>
+          <!-- 核心成果的简短介绍 -->
+          <div class="content has-text-justified">
+            <p>{{TEASER_TEXT}}</p>
+          </div>
+          <!-- 核心成果图，替换为你自己的图片 -->
+          <img src="images/teaser.jpg" alt="核心成果图"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 摘要区域 -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">摘要 (Abstract)</h2>
+        <div class="content has-text-justified">
+          <p>{{ABSTRACT_TEXT}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 方法概述区域 -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">方法概述 (Method Overview)</h2>
+        <!-- 方法概述图/视频，替换为你自己的图片或嵌入视频 -->
+        <div class="publication-video">
+          <img src="images/method_overview.jpg" alt="方法概述图"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 详细方法介绍区域 -->
+<!-- 你可以根据需要复制、修改或删除这些区块 -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- 第一个方法点 -->
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">{{METHOD_1_TITLE}}</h2>
+          <p>{{METHOD_1_DESCRIPTION}}</p>
+          <ul>
+            <li><strong>特点1:</strong> {{METHOD_1_FEATURE_1}}</li>
+            <li><strong>特点2:</strong> {{METHOD_1_FEATURE_2}}</li>
+          </ul>
+        </div>
+      </div>
+      <!-- 第二个方法点 -->
+      <div class="column">
+        <h2 class="title is-3">{{METHOD_2_TITLE}}</h2>
+        <div class="content">
+          <p>{{METHOD_2_DESCRIPTION}}</p>
+          <ul>
+            <li><strong>特点1:</strong> {{METHOD_2_FEATURE_1}}</li>
+            <li><strong>特点2:</strong> {{METHOD_2_FEATURE_2}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 实验结果区域 -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">实验结果 (Experimental Results)</h2>
+
+        <!-- SOTA比较 -->
+        <h3 class="title is-4">与SOTA方法比较</h3>
+        <div class="content has-text-justified">
+          <p>{{SOTA_COMPARISON_TEXT}}</p>
+          <!-- 你可以在这里插入一个结果对比表格或图片 -->
+          <img src="images/results_comparison.jpg" alt="SOTA比较结果"/>
+        </div>
+
+        <!-- 消融实验 -->
+        <h3 class="title is-4">消融实验 (Ablation Study)</h3>
+        <div class="content has-text-justified">
+          <p>{{ABLATION_STUDY_TEXT}}</p>
+          <!-- 你可以在这里插入一个消融实验结果表格或图片 -->
+          <img src="images/ablation_study.jpg" alt="消融实验结果"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX引用区域 -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{yourkey2025,
+  title={{{PAPER_TITLE}}},
+  author={作者1 and 作者2 and ...},
+  booktitle={{{CONFERENCE_NAME}}},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+<!-- 页脚区域 -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- 页脚的快捷链接 -->
+      <a class="icon-link" href="{{PDF_LINK}}">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link external-link" href="{{CODE_LINK}}">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            本网站基于 <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> 模板修改，并遵循 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> 许可协议。
+          </p>
+          <p>
+            如果您使用了此模板，请在页脚保留返回此页面的链接。同时，请记得移除您不希望在您网站上出现的Google Analytics统计代码。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
